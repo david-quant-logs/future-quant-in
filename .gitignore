@@ -13,6 +13,28 @@ htmlcov/
 .env
 .env.*
 *.log
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# 账号、密码、token：只放仓库外，例如 %USERPROFILE%\.cursor\secrets\
+ctp/config.local.json
+ctp/config.json
+**/ctp_simnow.json
+**/*credentials*.json
+**/*secrets*.json
+**/*token*
+**/*apikey*
+**/.env
+.cursor/secrets/
+
+# 知乎 / 社交草稿不进 GitHub
+notes/
+**/zhihu*.md
+**/wechat*.md
+**/xiaohongshu*.md
+.vntrader/
 
 data/raw/*
 !data/raw/.gitkeep
@@ -20,6 +42,9 @@ data/processed/*
 !data/processed/.gitkeep
 output/*
 !output/.gitkeep
+!output/reports/
+output/reports/*
+!output/reports/.gitkeep
 
 .idea/
 .vscode/

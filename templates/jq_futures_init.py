@@ -4,7 +4,12 @@
 
 def initialize(context):
     set_option('use_real_price', True)
-    set_option('avoid_future_data', True)
+    kind = ''
+    rp = getattr(context, 'run_params', None)
+    if rp is not None:
+        kind = str(getattr(rp, 'type', '') or '')
+    if 'backtest' in kind.lower():
+        set_option('avoid_future_data', True)
     set_subportfolios([SubPortfolioConfig(cash=10000, type='futures')])
     set_benchmark('C9999.XDCE')
     set_order_cost(

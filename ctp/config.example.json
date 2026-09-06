@@ -1,0 +1,12 @@
+{
+  "environment": "simnow",
+  "userid": "你的SimNow投资者账号",
+  "password": "你的密码",
+  "brokerid": "9999",
+  "appid": "simnow_client_test",
+  "auth_code": "0000000000000000",
+  "td_front": "tcp://182.254.243.31:30001",
+  "md_front": "tcp://182.254.243.31:30011",
+  "counter_env": "实盘",
+  "comment": "7x24 测试改 40001 / 40011。counter_env 对 SimNow 看穿式握手用「实盘」，不要用「测试」。"
+}

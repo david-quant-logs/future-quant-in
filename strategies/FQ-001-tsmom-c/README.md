@@ -1,28 +1,17 @@
-# FQ-001 玉米 20 日时间序列动量
+# FQ-001 20 日动量
 
-| 项 | 值 |
-| --- | --- |
-| 编号 | FQ-001 |
-| 状态 | backtest（代码已写，待首次聚宽回测） |
-| 品种 | 玉米 `C`，下单用主力真实合约 |
-| 频率 | 日，09:05 |
-| 信号 | 过去 20 个已收盘交易日简单收益的符号 |
-| 仓位 | 1 手多或 1 手空 |
-| 初始资金 | 10000 |
+编号始终是 **FQ-001**。规则迭代用 `v1` / `v2` / `v3` / `v4`。当前冻结 **v3**。
 
-文献与国内适用性：[research/FQ-001-tsmom-c.md](../../research/FQ-001-tsmom-c.md)
+| 版本 | 规则 | 记录 |
+| --- | --- | --- |
+| FQ-001-v1 | 玉米日频多空，止损 2% | [v1](iterations/v1.md) |
+| FQ-001-v2 | 玉米持有 20 日、只做多、止损 8% | [v2](iterations/v2.md) |
+| FQ-001-v3（当前） | 玉米 20 日动量 + 60 日确认 | [v3](iterations/v3.md) |
+| FQ-001-v4（否决） | 按行情切换：牛市趋势 / 熊市空仓 / 震荡超卖做多 | [v4](iterations/v4.md) |
 
-## 规则
-
-1. 每个交易日 09:05，取当前主力 `get_dominant_future('C')`。  
-2. 若主力相对昨日持仓合约已换月：平旧合约，后续只在新主力上操作。  
-3. 若处于止损冷却期：空仓，冷却计数减一。  
-4. 否则用该合约自身日线（不含今天）计算 `close[-1] / close[-21] - 1`。正 → 1 手多，负 → 1 手空，零 → 空仓。  
-5. 若已有持仓且浮动盈亏低于权益的 −2%：平仓，进入 5 个交易日冷却。  
-6. 保证金不够开 1 手则空仓。
-
-## 聚宽粘贴
-
-把 [strategy.py](strategy.py) 全文贴进聚宽。回测资金 10000、频率天、基准 `C9999.XDCE`。建议全样本从 2018-01-01 至今，另用最近 1 年当样本外。
-
-跑完把数字写入 [iterations/](iterations/)，用 [iterations/_template.md](iterations/_template.md)。
+```powershell
+python run_fq001.py --version v1
+python run_fq001.py --version v2
+python run_fq001.py --version v3
+python run_fq001.py --version v4
+```

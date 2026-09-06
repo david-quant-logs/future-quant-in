@@ -1,0 +1,6 @@
+# CTP 仿真绑定。主环境不装也能回测。
+# Python 3.12 Windows：vnpy_ctp 没有现成 wheel，用 openctp-ctp。
+openctp-ctp>=6.7.11.0
+# 若本机是 Python 3.10 / 3.13 且已装 VS 编译器，也可改用：
+# vnpy>=4.0
+# vnpy_ctp>=6.7
