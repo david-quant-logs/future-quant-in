@@ -55,6 +55,3 @@ python run_ctp_probe.py
 python run_fq002_ctp.py
 ```
 
-## 不进 GitHub 的内容
-
-知乎 / 微信 / 小红书草稿只放仓库外的 `C:\Project\notes`。API key、token、SimNow 密码只放 `%USERPROFILE%\.cursor\secrets\`。
